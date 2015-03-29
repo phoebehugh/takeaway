@@ -1,20 +1,22 @@
 class Takeaway
-  attr_reader :menu_list
-  attr_accessor :customer_name
+  attr_reader :menu
+  attr_accessor :customer_name, :customer_number
 
-  def menu_list
-    hash = { 
-      :meal_one => 5, 
-      :meal_two => 8, 
-      :meal_three => 10,
+  def initialize
+    @menu = { 
+      :lasagne => 8, 
+      :salad => 5, 
+      :dessert => 3
     }
+      
   end
 
   def customer name = nil, number = nil
     @customer_name = name
+    @customer_number = number
   end
 
-  def view_menu
-    @view_menu = menu_list
+  def display_menu
+    @menu.inject("") { |output, (dish, price)| output << "Dish: #{dish}: £#{price} \n" }
   end
 end
