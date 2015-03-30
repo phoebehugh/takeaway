@@ -19,6 +19,22 @@ context 'Takeaway' do
     expect(takeaway.customer_number).to eq '07943100432'
   end
 
+  it 'knows how many dishes are available' do
+    expect(takeaway.menu.count).to eq 3
+  end
+
+  it 'lasagne costs £8' do
+    expect(takeaway.menu[:lasagne]).to eq 8
+  end
+
+  it 'salad costs £5' do
+    expect(takeaway.menu[:salad]).to eq 5
+  end
+
+  it 'dessert costs £3' do
+    expect(takeaway.menu[:dessert]).to eq 3
+  end
+
 end
 
 context 'Takeaway customer' do
@@ -30,7 +46,9 @@ context 'Takeaway customer' do
     expect(takeaway.display_menu).to eq display_menu
   end
 
-  xit 'can select some dishes' do
+  it 'can select a dish to order' do
+    order_one = { "lasagne": 1 }
+    expect(takeaway.customer_order(order_one)).to eq order_one
   end
 
   xit 'can check the total for order is correct' do

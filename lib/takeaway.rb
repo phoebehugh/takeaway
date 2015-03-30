@@ -8,7 +8,7 @@ class Takeaway
       :salad => 5, 
       :dessert => 3
     }
-      
+    @customer_order = {}
   end
 
   def customer name = nil, number = nil
@@ -19,4 +19,9 @@ class Takeaway
   def display_menu
     @menu.inject("") { |output, (dish, price)| output << "Dish: #{dish}: £#{price} \n" }
   end
+
+  def customer_order(dish)
+    @customer_order.merge!(dish)
+  end
+
 end
