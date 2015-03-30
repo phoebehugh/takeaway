@@ -61,10 +61,14 @@ context 'Takeaway customer' do
     expect(takeaway.view_total_price).to eq 24
   end
 
-  xit 'can check the total for order is correct' do
+  it 'can check the total for order is correct' do
+    takeaway.customer_order("lasagne": 3)
+    confirm_order = "lasagne x 3 lasagne = £24\nOrder Total = £24" 
+    expect(takeaway.confirm_order).to eq confirm_order
   end
 
   xit 'will receive a text when order has been made' do
+    takeaway.send_text
   end
 
 end

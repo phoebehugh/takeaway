@@ -28,4 +28,12 @@ class Takeaway
     @customer_order.inject(0) { |price, (dish, quantity)| price += (@menu[dish] * quantity) }
   end
 
+  def confirm_order
+    confirmation = ""
+      @customer_order.inject(confirmation) do |acc, (dish, quantity)| acc << "#{dish} x 3 #{dish} = £#{@menu[dish] * quantity}\n"
+      end
+      confirmation << "Order Total = £#{view_total_price}"
+      confirmation
+  end
+
 end
