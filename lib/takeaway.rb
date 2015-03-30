@@ -1,6 +1,8 @@
+require_relative 'confirmation_text'
+
 class Takeaway
   attr_reader :menu
-  attr_accessor :customer_name, :customer_number
+  attr_accessor :customer_name, :customer_number, :customer_order
 
   def initialize
     @menu = { 
@@ -34,6 +36,10 @@ class Takeaway
       end
       confirmation << "Order Total = £#{view_total_price}"
       confirmation
+  end
+
+  def delivery_text
+    TakeawayText.new.send_text @customer_number, @customer_order
   end
 
 end
