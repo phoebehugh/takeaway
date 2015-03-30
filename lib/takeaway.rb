@@ -39,6 +39,7 @@ class Takeaway
   end
 
   def delivery_text
+    fail 'Sorry there seems to be a problem with your order' if @customer_order.empty? || !customer_number
     TakeawayText.new.send_text @customer_number, @customer_order
   end
 
