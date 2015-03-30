@@ -24,4 +24,8 @@ class Takeaway
     @customer_order.merge!(dish)
   end
 
+  def view_total_price
+    @customer_order.inject(0) { |price, (dish, quantity)| price += (@menu[dish] * quantity) }
+  end
+
 end

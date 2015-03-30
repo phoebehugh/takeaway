@@ -51,6 +51,16 @@ context 'Takeaway customer' do
     expect(takeaway.customer_order(order_one)).to eq order_one
   end
 
+  it 'can select more than one dish to order' do
+    order_two = { "lasagne": 3, "salad": 1, "dessert": 2}
+    expect(takeaway.customer_order(order_two)).to eq order_two
+  end
+
+  it 'can see the total price for the order' do
+    takeaway.customer_order("lasagne": 3)
+    expect(takeaway.view_total_price).to eq 24
+  end
+
   xit 'can check the total for order is correct' do
   end
 
